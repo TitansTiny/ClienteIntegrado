@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ListarProductos">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarProductosResult" type="tns:ArrayOfDTOProductos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDTOProductos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DTOProductos" nillable="true" type="tns:DTOProductos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DTOProductos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Imagen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tienda" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AgregarProducto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="producto" type="tns:DTOProductos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarProductoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgregarProductoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarProducto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="producto" type="tns:DTOProductos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarProductoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActualizarProductoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarProducto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="producto" type="tns:DTOProductos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarProductoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarProductoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarProductoPorNombre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarProductoPorNombreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarProductoPorNombreResult" type="tns:ArrayOfDTOProductos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarProductos" />
+  </wsdl:message>
+  <wsdl:message name="ListarProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarProductoSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarProducto" />
+  </wsdl:message>
+  <wsdl:message name="AgregarProductoSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarProductoSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarProducto" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarProductoSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarProductoSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarProducto" />
+  </wsdl:message>
+  <wsdl:message name="EliminarProductoSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarProductoPorNombreSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarProductoPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="BuscarProductoPorNombreSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarProductoPorNombreResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProductosServiceSoap">
+    <wsdl:operation name="ListarProductos">
+      <wsdl:input message="tns:ListarProductosSoapIn" />
+      <wsdl:output message="tns:ListarProductosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarProducto">
+      <wsdl:input message="tns:AgregarProductoSoapIn" />
+      <wsdl:output message="tns:AgregarProductoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <wsdl:input message="tns:ActualizarProductoSoapIn" />
+      <wsdl:output message="tns:ActualizarProductoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <wsdl:input message="tns:EliminarProductoSoapIn" />
+      <wsdl:output message="tns:EliminarProductoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProductoPorNombre">
+      <wsdl:input message="tns:BuscarProductoPorNombreSoapIn" />
+      <wsdl:output message="tns:BuscarProductoPorNombreSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductosServiceSoap" type="tns:ProductosServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarProductos">
+      <soap:operation soapAction="http://tempuri.org/ListarProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarProducto">
+      <soap:operation soapAction="http://tempuri.org/AgregarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap:operation soapAction="http://tempuri.org/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <soap:operation soapAction="http://tempuri.org/EliminarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProductoPorNombre">
+      <soap:operation soapAction="http://tempuri.org/BuscarProductoPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProductosServiceSoap12" type="tns:ProductosServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarProductos">
+      <soap12:operation soapAction="http://tempuri.org/ListarProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarProducto">
+      <soap12:operation soapAction="http://tempuri.org/AgregarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <soap12:operation soapAction="http://tempuri.org/EliminarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProductoPorNombre">
+      <soap12:operation soapAction="http://tempuri.org/BuscarProductoPorNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductosService">
+    <wsdl:port name="ProductosServiceSoap" binding="tns:ProductosServiceSoap">
+      <soap:address location="http://localhost:60601/ProductosService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProductosServiceSoap12" binding="tns:ProductosServiceSoap12">
+      <soap12:address location="http://localhost:60601/ProductosService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
